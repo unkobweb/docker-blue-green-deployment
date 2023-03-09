@@ -1,5 +1,5 @@
 import express from 'express';
-import packageJson from './package.json';
+import packageJson from './package.json' assert { type: "json" };
 
 const app = express();
 const HTTP_PORT = process.env.HTTP_PORT || 3000;

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: #f5f5f5;
+      font-family: sans-serif;
+    }
+    section {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 400;
+      color: #333;
+    }
+    p {
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <section>
+    <h1 id="message"></h1>
+    <p id="version"></p>
+  </section>
+  <script>
+    const baseUrl = process.env.NODE_ENV === 'production' ? 'https://backend:3000' : 'http://localhost:3000'
+    fetch(baseUrl)
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById('message').innerHTML = data.message
+        document.getElementById('version').innerHTML = "Version : " + data.version
+      })
+  </script>
+</body>
+</html>

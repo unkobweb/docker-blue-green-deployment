@@ -1,11 +1,14 @@
 import express from 'express';
 import packageJson from './package.json' assert { type: "json" };
+import cors from 'cors';
 
 const app = express();
+app.use(cors());
+
 const HTTP_PORT = process.env.HTTP_PORT || 3000;
 
 app.get('/', (req, res) => {
-  res.send(`Hello World! Version: ${packageJson.version}`);
+  res.json({message: "Hello World!", version: packageJson.version});
 })
 
 app.listen(HTTP_PORT, () => {

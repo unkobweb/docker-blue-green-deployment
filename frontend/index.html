@@ -36,8 +36,7 @@
     <p id="version"></p>
   </section>
   <script>
-    const baseUrl = process.env.NODE_ENV === 'production' ? 'https://backend:3000' : 'http://localhost:3000'
-    fetch(baseUrl)
+    fetch('/backend')
       .then(res => res.json())
       .then(data => {
         document.getElementById('message').innerHTML = data.message
